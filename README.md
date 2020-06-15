@@ -147,6 +147,7 @@
 ####  2.redis类型
 > #####
 
+
 1. String字符串类型
 
    string是redis最基本的类型，你可以理解成与Memcached一模一样的类型，一个key对应一个value。
@@ -180,3 +181,33 @@
    写入sadd name val  读取smembers name
 
    有序集合zadd name 0 val  读取ZRANGEBYSCORE name 0 1000
+
+
+####  3.redis高级教程
+> #####
+
+
+1. 数据备份与恢复
+
+   save命令为数据备份，该命令将在 redis 安装目录中创建dump.rdb文件
+
+   如果需要恢复数据，只需将备份文件 (dump.rdb) 移动到 redis 安装目录并启动服务即可。获取 redis 目录可以使用 CONFIG 命令，
+
+2. redis安全
+
+   CONFIG get requirepass 查看redis是否设置了密码验证
+
+   CONFIG set requirepass 密码  设置redis密码
+
+   AUTH 密码  登录操作
+
+3. 性能测试
+
+   基本命令 redis-benchmark [option] [option value] 如 redis-benchmark -n 100000 同时执行100000个请求，不可以在redis-cli中运行
+
+
+####  4.redis命令
+> #####
+
+
+1. 数据备份与恢复
