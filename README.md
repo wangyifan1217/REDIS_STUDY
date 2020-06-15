@@ -1,4 +1,4 @@
-# 关于redis的相关学习及流程
+# 关于redis的相关学习
 
 ####  1.redis.conf参数说明
 > #####
@@ -138,6 +138,45 @@
 
     activerehashing yes
 
+
 30. 指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件
 
     include /path/to/local.conf
+
+
+####  2.redis类型
+> #####
+
+1. String字符串类型
+
+   string是redis最基本的类型，你可以理解成与Memcached一模一样的类型，一个key对应一个value。
+
+   string类型是二进制安全的。意思是redis的string可以包含任何数据。比如jpg图片或者序列化的对象 。
+
+   string类型是Redis最基本的数据类型，一个键最大能存储512MB。
+
+   写入set name val   读取get name
+
+2. Hash(哈希)
+
+   Redis hash 是一个键值对集合。
+
+   Redis hash是一个string类型的field和value的映射表，hash特别适合用于存储对象。
+
+   写入HMSET name val1 val2....   读取HGETALL name
+
+3. List(列表)
+
+   Redis 列表是简单的字符串列表，按照插入顺序排序。你可以添加一个元素到列表的头部（左边）或者尾部（右边）
+
+   写入lpush name val   读取lrange name 0 10
+
+4. Set(集合)
+
+   Redis的Set是string类型的无序集合。
+
+   集合是通过哈希表实现的，所以添加，删除，查找的复杂度都是O(1)。
+
+   写入sadd name val  读取smembers name
+
+   有序集合zadd name 0 val  读取ZRANGEBYSCORE name 0 1000
